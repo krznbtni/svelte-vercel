@@ -1,7 +1,28 @@
 <script>
 	import Header from './Header.svelte';
 	import './styles.css';
+
+	import { partytownSnippet } from '@builder.io/partytown/integration';
+
+	const snippetText = partytownSnippet({
+		debug: true,
+		logCalls: true,
+		logGetters: true,
+		logImageRequests: true,
+		logMainAccess: true,
+		logScriptExecution: true,
+		logSendBeaconRequests: true,
+		logSetters: true,
+		logStackTraces: true,
+		forward: ['dataLayer.push']
+	});
+
+	let snippetText2 = `<script>${snippetText}<` + `/script>`;
 </script>
+
+<svelte:head>
+	{snippetText2}
+</svelte:head>
 
 <div class="app">
 	<Header />
