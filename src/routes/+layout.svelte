@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Header from './Header.svelte';
 	import './styles.css';
+	import { browser } from '$app/environment';
 
 	import { partytownSnippet } from '@builder.io/partytown/integration';
 
@@ -17,15 +18,20 @@
 		forward: ['dataLayer.push']
 	});
 
-	const partytown = {
-		debug: true,
-		forward: ['dataLayer.push']
-	};
+	if (browser) {
+		window.partytown = {
+			debug: true,
+			forward: ['dataLayer.push']
+		};
+
+		setTimeout(() => {
+			window.dispatchEvent(new CustomEvent('ptupdate'));
+		}, 3000);
+	}
 </script>
 
 <svelte:head>
-	{@html `<script>${partytown}</script>`}
-	{@html `<script crossorigin>${snippetText}</script>`}
+	{@html `<script>${snippetText}</script>`}
 </svelte:head>
 
 <div class="app">
