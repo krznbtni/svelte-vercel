@@ -19,14 +19,11 @@
 	});
 
 	if (browser) {
+		window.partytown = {};
 		window.partytown = {
 			debug: true,
 			forward: ['dataLayer.push']
 		};
-
-		setTimeout(() => {
-			window.dispatchEvent(new CustomEvent('ptupdate'));
-		}, 3000);
 	}
 </script>
 
