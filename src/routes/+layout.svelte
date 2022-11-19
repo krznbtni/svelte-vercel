@@ -16,12 +16,10 @@
 		logStackTraces: true,
 		forward: ['dataLayer.push']
 	});
-
-	let snippetText2 = `<script>${snippetText}<` + `/script>`;
 </script>
 
 <svelte:head>
-	{snippetText2}
+	{@html `<script>${snippetText}</script>`}
 </svelte:head>
 
 <div class="app">
