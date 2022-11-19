@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import Header from './Header.svelte';
 	import './styles.css';
 
@@ -16,9 +16,15 @@
 		logStackTraces: true,
 		forward: ['dataLayer.push']
 	});
+
+	const partytown = {
+		debug: true,
+		forward: ['dataLayer.push']
+	};
 </script>
 
 <svelte:head>
+	{@html `<script>${partytown}</script>`}
 	{@html `<script crossorigin>${snippetText}</script>`}
 </svelte:head>
 
