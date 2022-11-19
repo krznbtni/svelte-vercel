@@ -19,7 +19,7 @@
 </script>
 
 <svelte:head>
-	{@html `<script>${snippetText}</script>`}
+	{@html `<script crossorigin>${snippetText}</script>`}
 </svelte:head>
 
 <div class="app">
